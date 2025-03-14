@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: demo
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/mydatabase
+    username: myuser
+    password: secret
+    pool:
+      max-size: 20
+  flyway:
+    url: jdbc:mysql://localhost:3306/mydatabase
+    user: myuser
+    password: secret
+    baseline-on-migrate: true
+management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: INFO
+    org:
+      springframework: INFO
