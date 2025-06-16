@@ -4,7 +4,6 @@ import com.example.demo.dto.Isin
 import com.example.demo.dto.Portfolio
 import com.example.demo.service.PortfolioService
 import com.example.demo.service.PriceService
-import io.micrometer.core.annotation.Timed
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.toList
 import org.springframework.http.ResponseEntity
@@ -19,7 +18,6 @@ class PortfolioApi(
 ) {
 
   @GetMapping("/portfolios/{portfolioId}")
-  @Timed
   suspend fun getPortfolio(@PathVariable portfolioId: String): ResponseEntity<Portfolio> {
     val isinList = portfolioService.getPortfolioPositions(portfolioId).map { Isin(it.isin) }.toList()
     val instruments = priceService.getCurrentPrices(isinList)

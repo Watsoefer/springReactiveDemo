@@ -4,7 +4,6 @@ import com.example.demo.dto.Isin
 import com.example.demo.dto.Portfolio
 import com.example.demo.service.PortfolioService
 import com.example.demo.service.PriceService
-import io.micrometer.core.annotation.Timed
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -18,7 +17,6 @@ class PortfolioApi(
 ) {
 
   @GetMapping("/portfolios/{portfolioId}")
-  @Timed
   fun getPortfolio(@PathVariable portfolioId: String): Mono<ResponseEntity<Portfolio>> {
     return portfolioService.getPortfolioPositions(portfolioId).map { Isin(it.isin) }
       .collectList()

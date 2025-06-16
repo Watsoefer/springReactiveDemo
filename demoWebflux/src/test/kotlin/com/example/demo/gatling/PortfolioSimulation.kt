@@ -18,13 +18,7 @@ class PortfolioSimulation : Simulation() {
 
     init {
       setUp(
-//        myScenario.injectOpen(constantUsersPerSec(20.0).during(60))
-        myScenario.injectOpen(incrementUsersPerSec(10.0)
-          .times(5)
-          .eachLevelLasting(5)
-          .separatedByRampsLasting(5)
-          .startingFrom(10.0)
-        )
+        myScenario.injectOpen(constantUsersPerSec(25.0).during(60))
       ).protocols(httpProtocol);
     }
 }

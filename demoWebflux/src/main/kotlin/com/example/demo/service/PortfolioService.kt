@@ -1,7 +1,6 @@
 package com.example.demo.service
 
 import com.example.demo.service.db.repository.PortfolioRepository
-import io.micrometer.core.annotation.Timed
 import org.springframework.stereotype.Component
 
 @Component
