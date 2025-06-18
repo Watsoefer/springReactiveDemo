@@ -1,7 +1,6 @@
 package com.example.demo.gatling
 
 import io.gatling.javaapi.core.CoreDsl.constantUsersPerSec
-import io.gatling.javaapi.core.CoreDsl.incrementUsersPerSec
 import io.gatling.javaapi.core.CoreDsl.scenario
 import io.gatling.javaapi.core.ScenarioBuilder
 import io.gatling.javaapi.core.Simulation
@@ -16,9 +15,9 @@ class PortfolioSimulation : Simulation() {
   var myScenario: ScenarioBuilder = scenario("My Scenario")
     .exec(http("Request 1").get("/portfolios/12345"))
 
-    init {
-      setUp(
-        myScenario.injectOpen(constantUsersPerSec(25.0).during(60))
-      ).protocols(httpProtocol);
-    }
+  init {
+    setUp(
+      myScenario.injectOpen(constantUsersPerSec(25.0).during(60))
+    ).protocols(httpProtocol);
+  }
 }

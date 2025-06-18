@@ -1,7 +1,6 @@
 package com.example.demo.gatling
 
 import io.gatling.javaapi.core.CoreDsl.constantUsersPerSec
-import io.gatling.javaapi.core.CoreDsl.incrementUsersPerSec
 import io.gatling.javaapi.core.CoreDsl.scenario
 import io.gatling.javaapi.core.ScenarioBuilder
 import io.gatling.javaapi.core.Simulation

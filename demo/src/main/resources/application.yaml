@@ -1,6 +1,9 @@
 spring:
   application:
     name: demo
+  threads:
+    virtual:
+      enabled: false
   datasource:
     url: jdbc:mysql://localhost:3306/mydatabase
     username: myuser

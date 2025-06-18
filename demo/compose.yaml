@@ -16,7 +16,7 @@ services:
       - "9090:9090"
     restart: unless-stopped
     volumes:
-      - ./prometheus:/etc/prometheus
+      - ../containers/prometheus:/etc/prometheus
   grafana:
     image: grafana/grafana
     ports:
@@ -26,13 +26,13 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=grafana
     volumes:
-      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
-      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
-      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ../containers/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ../containers/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ../containers/grafana/dashboards:/var/lib/grafana/dashboards
   wiremock:
     image: "wiremock/wiremock:latest"
     ports:
       - "8181:8080"
     volumes:
-      - ./wiremock:/home/wiremock/mappings
+      - ../containers/wiremock:/home/wiremock/mappings
     entrypoint: [ "/docker-entrypoint.sh", "--async-response-enabled=true", "--disable-gzip", "--disable-request-logging", "--no-request-journal" ]
